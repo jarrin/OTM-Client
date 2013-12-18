@@ -10,8 +10,6 @@ namespace OTM_Client
 {
     class error
     {
-        private EventLog log;
-        private Form f;
         public error()
         {
   

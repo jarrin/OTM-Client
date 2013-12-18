@@ -18,18 +18,35 @@ namespace OTM_Client
             switch (this.action)
             {
                 case "callstart":  //Phone starts ringing
-                case "callpickup": //Phone is picked up by user
                     currentCall c = JsonConvert.DeserializeObject<currentCall>(this.data.ToString());
                     c.action = this.action;
-                    //c.handle(this);
-                    Program.f.setStatus("Aan het bellen");
+                    this.incommingCall(c);
+                break;
+                case "callpickup": //Phone is picked up by user
+
                 break;
                 case "callend":  //Ongoing call has ended
 
                 break;
             }
         }
+
+        //Handles incomming calls
+        private void incommingCall(currentCall c)
+        {
+            Program.f.setStatus("Binnenkomend gesprek");
+            if (c.info.Count == 3)
+            {
+            }
+            else
+            {
+                Program.f.ErrorH.handle("Inkomend gesprek had geen 3 info lijnen.", 1);
+            }
+        }
+    
     }
+
+    //C# equivelant of the JSON Objects
 
     public class currentCall
     {

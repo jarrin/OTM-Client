@@ -23,7 +23,7 @@ namespace OTM_Client
         //Own classes
         private UDPlink Con;
         private registry Reg;
-        private error ErrorH;
+        public error ErrorH;
 
 
         //Settings object.
@@ -105,8 +105,6 @@ namespace OTM_Client
 
         public void setStatus(string t)
         {
-            this.lbl_status.Text = "lalala";
-
             this.lbl_status.Invoke((MethodInvoker)(() => this.lbl_status.Text = t));
         }
 
