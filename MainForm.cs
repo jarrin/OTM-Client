@@ -23,8 +23,9 @@ namespace OTM_Client
         //Own classes
         private UDPlink Con;
         private registry Reg;
-        public error ErrorH;
+        private error ErrorH;
 
+        public Rectangle workingArea;
 
         //Settings object.
         Dictionary<string, string> settings = new Dictionary<string, string>
@@ -69,7 +70,7 @@ namespace OTM_Client
         {
             if (this.DesktopBounds.Contains(Cursor.Position))
             {
-                if (this.formState == "info" || this.formState == "minimal") //If form WAS minimized
+                if ((this.formState == "info" || this.formState == "minimal") && this.formState != "incomming") //If form WAS minimized, and it isn't during an incomming call
                 {
                     this.mouseInForm = true; //Mouse is inside
                     this.changeState("full"); //Then change it to it's full state
@@ -84,28 +85,63 @@ namespace OTM_Client
         //Changes form size & position
         public void changeState(string state)
         {
-            Rectangle workingArea = Screen.GetWorkingArea(this);;
+
+
+            int h = 9;
+            string fs = "";
+
             switch (state)
             {
                 case "minimal":
-                    this.Height = 30;
-                    this.Location = new Point(workingArea.Right - Size.Width, 
-                                              workingArea.Bottom - Size.Height);
-                    this.formState = "minimal";
+                    h = 30;
+                    fs = "minimal";
+                break;
+                case "incomming":
+                    h = 150;
+                    fs = "incomming";
                 break;
                 case "full":
-                    this.Height = 329;
-                    this.Location = new Point(workingArea.Right - Size.Width, 
-                                              workingArea.Bottom - Size.Height);
-                    this.formState = "full";
+                    h = 329;
+                    fs = "full";
                 break;
+                
             }
+
+            if (this.InvokeRequired)
+            {
+                this.Invoke((MethodInvoker)(() => this.workingArea = Screen.GetWorkingArea(this)));
+                this.Invoke((MethodInvoker)(() => this.Height = h));
+                this.Invoke((MethodInvoker)(() => this.formState = fs));
+                this.Invoke((MethodInvoker)(() => this.Location = new Point(workingArea.Right - Size.Width, workingArea.Bottom - Size.Height)));
+
+                switch (state)
+                {
+                    case "incomming":
+                        this.Invoke((MethodInvoker)(() => this.pnl_dialer.Visible = false));
+                        this.Invoke((MethodInvoker)(() => this.pnl_incomming.Visible = true));
+                     break;
+                }
+
+            }
+            else
+            {
+                workingArea = Screen.GetWorkingArea(this);
+                this.Height = h;
+                this.formState = fs;
+                this.Location = new Point(workingArea.Right - Size.Width, workingArea.Bottom - Size.Height);
+            }
+            
+            
+           
         }
 
 
         public void setStatus(string t)
         {
-            this.lbl_status.Invoke((MethodInvoker)(() => this.lbl_status.Text = t));
+            if (this.InvokeRequired)
+                this.lbl_status.Invoke((MethodInvoker)(() => this.lbl_status.Text = t));
+            else
+                this.lbl_status.Text = t;
         }
 
 
@@ -183,6 +219,16 @@ namespace OTM_Client
         }
 
         private void lbl_status_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbl_l1_Click(object sender, EventArgs e)
         {
 
         }

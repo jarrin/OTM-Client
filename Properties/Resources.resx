@@ -121,10 +121,13 @@
   <data name="phone-logo-circle_green_kl" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\phone-logo-circle_green_kl.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="phone-logo-circle_green_kl1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\phone-logo-circle_green_kl.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="pick_up" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pick_up.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="framework-settings" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\framework-settings.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="deny" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\deny.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

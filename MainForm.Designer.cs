@@ -28,9 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.brn_settings = new System.Windows.Forms.Button();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_main));
             this.btn_0 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
             this.btn_9 = new System.Windows.Forms.Button();
             this.btn_8 = new System.Windows.Forms.Button();
             this.btn_7 = new System.Windows.Forms.Button();
@@ -42,29 +41,22 @@
             this.btn_1 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.txt_line1 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.lbl_l2 = new System.Windows.Forms.Label();
+            this.lbl_l1 = new System.Windows.Forms.Label();
+            this.lbl_l0 = new System.Windows.Forms.Label();
+            this.lbl_nr = new System.Windows.Forms.Label();
             this.pnl_dialer = new System.Windows.Forms.Panel();
             this.lbl_status = new System.Windows.Forms.Label();
+            this.pnl_incomming = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btn_pickUp = new System.Windows.Forms.Button();
+            this.brn_settings = new System.Windows.Forms.Button();
+            this.button11 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.pnl_dialer.SuspendLayout();
+            this.pnl_incomming.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // brn_settings
-            // 
-            this.brn_settings.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(240)))), ((int)(((byte)(244)))));
-            this.brn_settings.FlatAppearance.BorderSize = 2;
-            this.brn_settings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.brn_settings.Font = new System.Drawing.Font("Microsoft Sans Serif", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.brn_settings.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(167)))), ((int)(((byte)(178)))));
-            this.brn_settings.Image = global::OTM_Client.Properties.Resources.framework_settings;
-            this.brn_settings.Location = new System.Drawing.Point(161, 155);
-            this.brn_settings.Name = "brn_settings";
-            this.brn_settings.Size = new System.Drawing.Size(84, 53);
-            this.brn_settings.TabIndex = 24;
-            this.brn_settings.UseVisualStyleBackColor = true;
             // 
             // btn_0
             // 
@@ -79,20 +71,6 @@
             this.btn_0.TabIndex = 23;
             this.btn_0.Text = "0";
             this.btn_0.UseVisualStyleBackColor = true;
-            // 
-            // button11
-            // 
-            this.button11.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(240)))), ((int)(((byte)(244)))));
-            this.button11.FlatAppearance.BorderSize = 2;
-            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button11.Font = new System.Drawing.Font("Microsoft Sans Serif", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(167)))), ((int)(((byte)(178)))));
-            this.button11.Image = global::OTM_Client.Properties.Resources.phone_logo_circle_green_kl1;
-            this.button11.Location = new System.Drawing.Point(-3, 155);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(83, 53);
-            this.button11.TabIndex = 22;
-            this.button11.UseVisualStyleBackColor = true;
             // 
             // btn_9
             // 
@@ -201,7 +179,7 @@
             this.btn_2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(167)))), ((int)(((byte)(178)))));
-            this.btn_2.Location = new System.Drawing.Point(78, 2);
+            this.btn_2.Location = new System.Drawing.Point(78, 3);
             this.btn_2.Name = "btn_2";
             this.btn_2.Size = new System.Drawing.Size(85, 53);
             this.btn_2.TabIndex = 14;
@@ -237,47 +215,54 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(167)))), ((int)(((byte)(180)))));
-            this.panel2.Controls.Add(this.textBox2);
-            this.panel2.Controls.Add(this.txt_line1);
-            this.panel2.Controls.Add(this.textBox1);
+            this.panel2.Controls.Add(this.lbl_l2);
+            this.panel2.Controls.Add(this.lbl_l1);
+            this.panel2.Controls.Add(this.lbl_l0);
+            this.panel2.Controls.Add(this.lbl_nr);
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(244, 90);
             this.panel2.TabIndex = 28;
             // 
-            // textBox2
+            // lbl_l2
             // 
-            this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(167)))), ((int)(((byte)(180)))));
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2.Font = new System.Drawing.Font("Lucida Sans Unicode", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(1, 60);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(240, 21);
-            this.textBox2.TabIndex = 30;
-            this.textBox2.Text = "Dossier aanwezig:      JA ";
+            this.lbl_l2.AutoSize = true;
+            this.lbl_l2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_l2.Location = new System.Drawing.Point(10, 60);
+            this.lbl_l2.Name = "lbl_l2";
+            this.lbl_l2.Size = new System.Drawing.Size(183, 24);
+            this.lbl_l2.TabIndex = 3;
+            this.lbl_l2.Text = "+31 (0)30 33 234 234";
             // 
-            // txt_line1
+            // lbl_l1
             // 
-            this.txt_line1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(167)))), ((int)(((byte)(180)))));
-            this.txt_line1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txt_line1.Font = new System.Drawing.Font("Lucida Sans Unicode", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_line1.Location = new System.Drawing.Point(2, 12);
-            this.txt_line1.Name = "txt_line1";
-            this.txt_line1.Size = new System.Drawing.Size(240, 25);
-            this.txt_line1.TabIndex = 28;
-            this.txt_line1.Text = "Mevr. Gries Jansen";
+            this.lbl_l1.AutoSize = true;
+            this.lbl_l1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_l1.Location = new System.Drawing.Point(10, 42);
+            this.lbl_l1.Name = "lbl_l1";
+            this.lbl_l1.Size = new System.Drawing.Size(82, 20);
+            this.lbl_l1.TabIndex = 2;
+            this.lbl_l1.Text = "Conexxion";
             // 
-            // textBox1
+            // lbl_l0
             // 
-            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(167)))), ((int)(((byte)(180)))));
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Font = new System.Drawing.Font("Lucida Sans Unicode", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(2, 33);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(240, 21);
-            this.textBox1.TabIndex = 29;
-            this.textBox1.Text = "+31 (0)30 8893482";
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
+            this.lbl_l0.AutoSize = true;
+            this.lbl_l0.Location = new System.Drawing.Point(10, 27);
+            this.lbl_l0.Name = "lbl_l0";
+            this.lbl_l0.Size = new System.Drawing.Size(176, 13);
+            this.lbl_l0.TabIndex = 1;
+            this.lbl_l0.Text = "Mevr. Dorra Jansen tot Guldenberg ";
+            this.lbl_l0.Click += new System.EventHandler(this.lbl_l1_Click);
+            // 
+            // lbl_nr
+            // 
+            this.lbl_nr.AutoSize = true;
+            this.lbl_nr.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_nr.Location = new System.Drawing.Point(10, 3);
+            this.lbl_nr.Name = "lbl_nr";
+            this.lbl_nr.Size = new System.Drawing.Size(183, 24);
+            this.lbl_nr.TabIndex = 0;
+            this.lbl_nr.Text = "+31 (0)30 33 234 234";
             // 
             // pnl_dialer
             // 
@@ -306,10 +291,83 @@
             this.lbl_status.ForeColor = System.Drawing.Color.White;
             this.lbl_status.Location = new System.Drawing.Point(5, 11);
             this.lbl_status.Name = "lbl_status";
-            this.lbl_status.Size = new System.Drawing.Size(124, 13);
+            this.lbl_status.Size = new System.Drawing.Size(77, 13);
             this.lbl_status.TabIndex = 26;
-            this.lbl_status.Text = "Inkomende oproep...";
+            this.lbl_status.Text = "Beschikbaar";
             this.lbl_status.Click += new System.EventHandler(this.lbl_status_Click);
+            // 
+            // pnl_incomming
+            // 
+            this.pnl_incomming.BackColor = System.Drawing.Color.White;
+            this.pnl_incomming.Controls.Add(this.button1);
+            this.pnl_incomming.Controls.Add(this.btn_pickUp);
+            this.pnl_incomming.Location = new System.Drawing.Point(3, 120);
+            this.pnl_incomming.Name = "pnl_incomming";
+            this.pnl_incomming.Size = new System.Drawing.Size(244, 30);
+            this.pnl_incomming.TabIndex = 27;
+            this.pnl_incomming.Visible = false;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.LightCoral;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Image = global::OTM_Client.Properties.Resources.deny;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(122, 0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(122, 30);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "ctrl+escape";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // btn_pickUp
+            // 
+            this.btn_pickUp.BackColor = System.Drawing.Color.LightGreen;
+            this.btn_pickUp.FlatAppearance.BorderSize = 0;
+            this.btn_pickUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_pickUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_pickUp.ForeColor = System.Drawing.Color.White;
+            this.btn_pickUp.Image = ((System.Drawing.Image)(resources.GetObject("btn_pickUp.Image")));
+            this.btn_pickUp.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_pickUp.Location = new System.Drawing.Point(0, 0);
+            this.btn_pickUp.Name = "btn_pickUp";
+            this.btn_pickUp.Size = new System.Drawing.Size(122, 30);
+            this.btn_pickUp.TabIndex = 0;
+            this.btn_pickUp.Text = "ctrl+spatie";
+            this.btn_pickUp.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_pickUp.UseVisualStyleBackColor = false;
+            // 
+            // brn_settings
+            // 
+            this.brn_settings.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(240)))), ((int)(((byte)(244)))));
+            this.brn_settings.FlatAppearance.BorderSize = 2;
+            this.brn_settings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.brn_settings.Font = new System.Drawing.Font("Microsoft Sans Serif", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.brn_settings.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(167)))), ((int)(((byte)(178)))));
+            this.brn_settings.Image = global::OTM_Client.Properties.Resources.framework_settings;
+            this.brn_settings.Location = new System.Drawing.Point(161, 155);
+            this.brn_settings.Name = "brn_settings";
+            this.brn_settings.Size = new System.Drawing.Size(84, 53);
+            this.brn_settings.TabIndex = 24;
+            this.brn_settings.UseVisualStyleBackColor = true;
+            // 
+            // button11
+            // 
+            this.button11.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(240)))), ((int)(((byte)(244)))));
+            this.button11.FlatAppearance.BorderSize = 2;
+            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button11.Font = new System.Drawing.Font("Microsoft Sans Serif", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(167)))), ((int)(((byte)(178)))));
+            this.button11.Image = global::OTM_Client.Properties.Resources.phone_logo_circle_green_kl;
+            this.button11.Location = new System.Drawing.Point(-3, 155);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(83, 53);
+            this.button11.TabIndex = 22;
+            this.button11.UseVisualStyleBackColor = true;
             // 
             // frm_main
             // 
@@ -317,6 +375,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(58)))), ((int)(((byte)(69)))));
             this.ClientSize = new System.Drawing.Size(250, 329);
+            this.Controls.Add(this.pnl_incomming);
             this.Controls.Add(this.lbl_status);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -328,6 +387,7 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.pnl_dialer.ResumeLayout(false);
+            this.pnl_incomming.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -350,10 +410,14 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel pnl_dialer;
         private System.Windows.Forms.Label lbl_status;
-        private System.Windows.Forms.TextBox txt_line1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label lbl_l1;
+        private System.Windows.Forms.Label lbl_l0;
+        private System.Windows.Forms.Label lbl_nr;
+        private System.Windows.Forms.Label lbl_l2;
+        private System.Windows.Forms.Panel pnl_incomming;
+        private System.Windows.Forms.Button btn_pickUp;
+        private System.Windows.Forms.Button button1;
 
 
 

@@ -63,6 +63,16 @@ namespace OTM_Client.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap deny {
+            get {
+                object obj = ResourceManager.GetObject("deny", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap framework_settings {
             get {
                 object obj = ResourceManager.GetObject("framework-settings", resourceCulture);
@@ -83,9 +93,9 @@ namespace OTM_Client.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap phone_logo_circle_green_kl1 {
+        internal static System.Drawing.Bitmap pick_up {
             get {
-                object obj = ResourceManager.GetObject("phone-logo-circle_green_kl1", resourceCulture);
+                object obj = ResourceManager.GetObject("pick_up", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -34,14 +34,17 @@ namespace OTM_Client
         //Handles incomming calls
         private void incommingCall(currentCall c)
         {
-            Program.f.setStatus("Binnenkomend gesprek");
-            if (c.info.Count == 3)
+            //set title
+            Program.f.setStatus("Binnenkomend gesprek");  
+            if (c.info != null && c.info.Count == 3)
             {
+                //There's some extra info
             }
             else
             {
-                Program.f.ErrorH.handle("Inkomend gesprek had geen 3 info lijnen.", 1);
+                //No extra info
             }
+            Program.f.changeState("incomming");
         }
     
     }
