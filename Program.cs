@@ -35,7 +35,7 @@ namespace OTM_Client
                 Application.Run(f);
             }
         }
-       
+       /*
         [StructLayout(LayoutKind.Sequential)]
         public struct COPYDATASTRUCT
         {
@@ -46,7 +46,7 @@ namespace OTM_Client
             [MarshalAs(UnmanagedType.SysInt)]
             public IntPtr lpData;
 
-
+            
             unsafe protected override void WndProc(ref Message message)
             {
                 if (message.Msg == WM_COPYDATA)
@@ -97,7 +97,7 @@ namespace OTM_Client
             [DllImport("User32.dll")]
             private static extern bool SendMessage(int hWnd,
                 int wMsg, IntPtr wParam, IntPtr lParam);
-
-        }
+        
+        }*/
     }
 }

@@ -11,19 +11,18 @@ namespace OTM_Client
     {
         public string action { get; set; }
         public object data { get; set; }
-
+        private currentCall c;
         public void handle()
         {
-            Debug.WriteLine("cx");
             switch (this.action)
             {
                 case "callstart":  //Phone starts ringing
-                    currentCall c = JsonConvert.DeserializeObject<currentCall>(this.data.ToString());
+                    c = JsonConvert.DeserializeObject<currentCall>(this.data.ToString());
                     c.action = this.action;
                     this.incommingCall(c);
                 break;
                 case "callpickup": //Phone is picked up by user
-
+                Debug.WriteLine(c.id + "");
                 break;
                 case "callend":  //Ongoing call has ended
 
