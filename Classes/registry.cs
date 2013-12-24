@@ -11,15 +11,13 @@ namespace OTM_Client
     class registry
     {
         RegistryKey root;
-        error errorH;
-        public registry(error e)
+        public registry()
         {
-            this.errorH = e;
             this.root = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\\OTM", true);
 
             if (this.root == null)
             {
-                errorH.handle("Er is helaas een fout opgetreden. Kan de applicatie niet opstarten. \n (Registry keys niet gevonden)", 9);
+                Debug.WriteLine("Er is helaas een fout opgetreden. Kan de applicatie niet opstarten. \n (Registry keys niet gevonden)");
             }
         }
         public string get(string n)

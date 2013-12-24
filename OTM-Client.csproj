@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\eventH.cs" />
+    <Compile Include="Classes\pipes.cs" />
     <Compile Include="Classes\UDPLink.cs" />
     <Compile Include="Classes\error.cs" />
     <Compile Include="Classes\registry.cs" />

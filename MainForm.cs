@@ -24,6 +24,7 @@ namespace OTM_Client
         private UDPlink Con;
         private registry Reg;
         private error ErrorH;
+        private pipes pipes;
 
         public Rectangle workingArea;
 
@@ -41,7 +42,7 @@ namespace OTM_Client
             
             this.changeState("minimal");
             ErrorH = new error();
-            Reg = new registry(ErrorH);
+            Reg = new registry();
 
             //Load settings from registry.
             this.settings["serverPort"] = Reg.get("serverPort");
@@ -56,6 +57,11 @@ namespace OTM_Client
             {
                 Con = new UDPlink(this.settings["serverHost"], Convert.ToInt32(this.settings["serverPort"]), Convert.ToInt32(this.settings["clientPort"]));
             }
+
+            //Setting up the Named Pipe
+            string pipeName = Reg.get("namedPipeName");
+            pipes = new pipes(pipeName);
+
             //Enable Timer
             mpCheckTimer = new Timer();
             mpCheckTimer.Interval = 200;
@@ -139,6 +145,7 @@ namespace OTM_Client
 
         public void setStatus(string t)
         {
+            MessageBox.Show(t);
             if (this.InvokeRequired)
                 this.lbl_status.Invoke((MethodInvoker)(() => this.lbl_status.Text = t));
             else

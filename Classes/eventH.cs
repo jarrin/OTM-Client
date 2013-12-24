@@ -11,15 +11,15 @@ namespace OTM_Client
     {
         public string action { get; set; }
         public object data { get; set; }
-        private currentCall c;
+        private Data c;
         public void handle()
         {
             switch (this.action)
             {
                 case "callstart":  //Phone starts ringing
-                    c = JsonConvert.DeserializeObject<currentCall>(this.data.ToString());
+                    c = JsonConvert.DeserializeObject<Data>(this.data.ToString());
                     c.action = this.action;
-                    this.incommingCall(c);
+                    this.incommingCall();
                 break;
                 case "callpickup": //Phone is picked up by user
                 Debug.WriteLine(c.id + "");
@@ -27,11 +27,16 @@ namespace OTM_Client
                 case "callend":  //Ongoing call has ended
 
                 break;
+                case "makecall": //Incomming command to make call
+                    c = JsonConvert.DeserializeObject<Data>(this.data.ToString());
+                    c.action = this.action;
+                    this.makeCall();
+                break;
             }
         }
 
         //Handles incomming calls
-        private void incommingCall(currentCall c)
+        private void incommingCall()
         {
             //set title
             Program.f.setStatus("Binnenkomend gesprek");  
@@ -45,14 +50,22 @@ namespace OTM_Client
             }
             Program.f.changeState("incomming");
         }
+        private void makeCall()
+        {
+            
+        }
     
     }
 
     //C# equivelant of the JSON Objects
 
-    public class currentCall
+    public class JSONobject
     {
-
+        public string action { get; set; }
+        public Data data { get; set; }
+    }
+    public class Data
+    {
         public string action { get; set; }
 
         public int id { get; set; }

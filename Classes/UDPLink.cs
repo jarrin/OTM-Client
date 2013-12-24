@@ -18,7 +18,7 @@ namespace OTM_Client
         private IPEndPoint RemoteEndPoint;
         private Socket server;
 
-
+        private bool running = true;
 
         public UDPlink(string h, int sp, int cp)
         {
