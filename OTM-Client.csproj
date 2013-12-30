@@ -57,6 +57,7 @@
     <Compile Include="Classes\error.cs" />
     <Compile Include="Classes\registry.cs" />
     <Compile Include="Classes\ui.cs" />
+    <Compile Include="Classes\UIhandler.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,6 +100,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\deny.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\otm-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\otm-icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

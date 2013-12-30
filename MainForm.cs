@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.Runtime.InteropServices;
 
 
 namespace OTM_Client
@@ -24,7 +25,7 @@ namespace OTM_Client
         private UDPlink Con;
         private registry Reg;
         private error ErrorH;
-        private pipes pipes;
+       // private PipeServer pS;
 
         public Rectangle workingArea;
 
@@ -58,10 +59,6 @@ namespace OTM_Client
                 Con = new UDPlink(this.settings["serverHost"], Convert.ToInt32(this.settings["serverPort"]), Convert.ToInt32(this.settings["clientPort"]));
             }
 
-            //Setting up the Named Pipe
-            string pipeName = Reg.get("namedPipeName");
-            pipes = new pipes(pipeName);
-
             //Enable Timer
             mpCheckTimer = new Timer();
             mpCheckTimer.Interval = 200;
@@ -69,7 +66,38 @@ namespace OTM_Client
             mpCheckTimer.Enabled = true;
             
         }
+        private void CreateNotifyicon()
+        {/*
+            this.components = new System.ComponentModel.Container();
+            this.contextMenu1 = new System.Windows.Forms.ContextMenu();
+            this.menuItem1 = new System.Windows.Forms.MenuItem();
 
+            // Initialize menuItem1
+            this.menuItem1.Index = 0;
+            this.menuItem1.Text = "E&xit";
+            this.menuItem1.Click += new System.EventHandler(this.menuItem1_Click);
+
+            // Initialize contextMenu1
+            this.contextMenu1.MenuItems.AddRange(
+                        new System.Windows.Forms.MenuItem[] { this.menuItem1 });*/
+
+        }
+        private void notifyIcon1_Click(object Sender, EventArgs e)
+        {
+
+            MessageBox.Show("clicked");
+        }
+
+        private void notifyIcon1_DoubleClick(object Sender, EventArgs e)
+        {
+            MessageBox.Show("Double clicked");
+        }
+
+        private void menuItem1_Click(object Sender, EventArgs e)
+        {
+            // Close the form, which closes the application.
+            Application.Exit();
+        }
 
         //Checks if mouse pointer is inside Form(this)
         private void MousePosCheck(object sender, EventArgs e)
@@ -239,6 +267,26 @@ namespace OTM_Client
         private void lbl_l1_Click(object sender, EventArgs e)
         {
 
+        }
+    }
+    class TextBoxWithoutCaret : TextBox
+    {
+        [DllImport("coredll.dll")]
+        static extern bool HideCaret(IntPtr hwnd);
+
+        [DllImport("coredll.dll")]
+        static extern bool ShowCaret(IntPtr hwnd);
+
+        protected override void OnGotFocus(EventArgs e)
+        {
+            base.OnGotFocus(e);
+            HideCaret(Handle);
+        }
+
+        protected override void OnLostFocus(EventArgs e)
+        {
+            base.OnLostFocus(e);
+            ShowCaret(Handle);
         }
     }
 }

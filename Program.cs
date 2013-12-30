@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using System.Threading;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
+using System.Drawing;
 
 namespace OTM_Client
 {
@@ -13,7 +14,6 @@ namespace OTM_Client
         public static frm_main f;
         static string appGuid = "{8F6F0AC4-B9A1-45fd-A8CF-72F04E6BDE8F}";
         public const int WM_COPYDATA = 0x004a;
-
 
         /// <summary>
         /// The main entry point for the application.
@@ -26,11 +26,11 @@ namespace OTM_Client
             
             using (Mutex mutex = new Mutex(false, appGuid))
             {
-                //if (!mutex.WaitOne(0, false))
-                //{
+                if (!mutex.WaitOne(0, false))
+                {
                     registry Reg = new registry();
                     string pipeName = Reg.get("namedPipeName");
-                    pipes Client = new pipes(pipeName, true);
+                  // pipes Client = new pipes(pipeName, true);
 
                     //-- Send object
                     JSONobject temp = new JSONobject();
@@ -40,16 +40,19 @@ namespace OTM_Client
                     temp.data = d;
                     //--
 
-                    Client.send("testxd");
+                  //  Client.send("testxd");
                     //Client.dispose();
 
                     Application.Exit();
                     return;
-               // }
-               // Program.f = new frm_main();
-             //   Application.Run(f);
+                }
+
+                Program.f = new frm_main();
+                Application.Run(f);
             }
         }
+     
+    
       
     }
 }

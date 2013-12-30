@@ -12,129 +12,79 @@ using Newtonsoft.Json;
 
 namespace OTM_Client
 {
-    // Delegate for passing received message back to caller
-    class pipes
+
+    public class Pipe
     {
-        private bool running = true;
+        public static string pipeName;
+        private static NamedPipeServerStream pipeServer;
+        private static readonly int BufferSize = 256;
 
-        private string pipeName;
 
-        private NamedPipeServerStream pipeServer;
-        private NamedPipeClientStream pipeClient;
 
-        private Thread ClientThread, ServerThread;
-
-        private Boolean connectedOrWaiting = false;
-
-        private string sendString;
-
-        public pipes(string pipeName, bool clientOnly)
+        public static void createPipeServer()
         {
-            construct(pipeName, clientOnly);
+            Decoder decoder = Encoding.Default.GetDecoder();
+            Byte[] bytes = new Byte[BufferSize];
+            char[] chars = new char[BufferSize];
+            int numBytes = 0;
+            StringBuilder msg = new StringBuilder();
 
-        }
-        public pipes(string pipeName)
-        {
-            construct(pipeName, false);
-        }
-
-        private void construct(string pipeName, bool clientOnly)
-        {
-            //Starting threads:
-            this.pipeName = pipeName;
-            if (!clientOnly)
+            try
             {
-                //Startserver
-                ServerThread = new System.Threading.Thread(ThreadStartServer);
-                ServerThread.Start();
-            }
-
-            ClientThread = new System.Threading.Thread(ThreadStartClient);
-            ClientThread.Start();
-        }
-        private void ThreadStartServer()
-        {
-            pipeServer = new NamedPipeServerStream(this.pipeName, PipeDirection.InOut, 1, PipeTransmissionMode.Message, PipeOptions.Asynchronous);
-
-            Byte[] buffer = new Byte[65535];
-
-            while (running)
-            {
-                if (!connectedOrWaiting)
+                pipeServer = new NamedPipeServerStream(pipeName, PipeDirection.In, 1,
+                                                       PipeTransmissionMode.Message,
+                                                       PipeOptions.Asynchronous);
+                while (true)
                 {
-                    pipeServer.BeginWaitForConnection((a) => { pipeServer.EndWaitForConnection(a); }, null);
+                    pipeServer.WaitForConnection();
 
-                    connectedOrWaiting = true;
-                }
-
-                if (pipeServer.IsConnected)
-                {
-                    Int32 count = pipeServer.Read(buffer, 0, 65535);
-
-                    if (count > 0)
+                    do
                     {
-                        UTF8Encoding encoding = new UTF8Encoding();
-                        String strData = encoding.GetString(buffer, 0, count);
-                        MessageBox.Show(strData);
-                        eventH e = JsonConvert.DeserializeObject<eventH>(strData);
-                        e.handle();
-
-                    }
-
+                        msg.Length = 0;
+                        do
+                        {
+                            numBytes = pipeServer.Read(bytes, 0, BufferSize);
+                            if (numBytes > 0)
+                            {
+                                int numChars = decoder.GetCharCount(bytes, 0, numBytes);
+                                decoder.GetChars(bytes, 0, numBytes, chars, 0, false);
+                                msg.Append(chars, 0, numChars);
+                            }
+                        } while (numBytes > 0 && !pipeServer.IsMessageComplete);
+                        decoder.Reset();
+                        if (numBytes > 0)
+                        {
+                            //MESSAGE O
+                            Debug.WriteLine(msg.ToString());
+                            //ownerInvoker.Invoke(msg.ToString());
+                        }
+                    } while (numBytes != 0);
                     pipeServer.Disconnect();
-
-                    connectedOrWaiting = false;
                 }
             }
-
-            Console.WriteLine("Connection lost");
-        }
-        public void dispose()
-        {
-            running = false;
-            if(ClientThread != null)
-                ClientThread.Abort();
-            if (ServerThread != null)
-                ServerThread.Abort();    
-        }
-        public void send(string s)
-        {
-            this.sendString = s;
-        }
-        public void send(JSONobject j)
-        {
-            string temp = JsonConvert.SerializeObject(j);
-            MessageBox.Show(temp);
-            this.sendString = temp;
-        }
-        private void ThreadStartClient()
-        {
-            // Ensure that we only start the client after the server has created the pipe
-            //ManualResetEvent SyncClientServer = (ManualResetEvent)obj;
-            pipeClient = new NamedPipeClientStream(this.pipeName);
-                pipeClient.Connect();
-                Debug.WriteLine("thread started");
-
-            using (StreamWriter sw = new StreamWriter(pipeClient))
+            catch (Exception ex)
             {
-                sw.AutoFlush = true;
-                while (running)
-                {
-                    Debug.WriteLine(sendString);
-                    if (sendString != null)
-                    {
-                        sw.WriteLine(sendString);
-                        MessageBox.Show("x");
-                        sendString = null;
-
-                    }
-                }
-
+                MessageBox.Show(ex.Message);
             }
-            
         }
-
+        public static void createPipeClient()
+        {
+            using (NamedPipeClientStream pipeClient = new NamedPipeClientStream(".", pipeName, PipeDirection.Out, PipeOptions.Asynchronous))
+            {
+                try
+                {
+                    pipeClient.Connect(2000);
+                }
+                catch
+                {
+                    MessageBox.Show("The Pipe server must be started in order to send data to it.");
+                    return;
+                }
+                using (StreamWriter sw = new StreamWriter(pipeClient))
+                {
+                    sw.WriteLine("testZender");
+                }
+            }
+        }
     }
-
-
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_main));
             this.btn_0 = new System.Windows.Forms.Button();
             this.btn_9 = new System.Windows.Forms.Button();
@@ -41,21 +42,30 @@
             this.btn_1 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.lbl_l2 = new System.Windows.Forms.Label();
             this.lbl_l1 = new System.Windows.Forms.Label();
             this.lbl_l0 = new System.Windows.Forms.Label();
             this.lbl_nr = new System.Windows.Forms.Label();
             this.pnl_dialer = new System.Windows.Forms.Panel();
+            this.brn_settings = new System.Windows.Forms.Button();
+            this.button11 = new System.Windows.Forms.Button();
             this.lbl_status = new System.Windows.Forms.Label();
             this.pnl_incomming = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.btn_pickUp = new System.Windows.Forms.Button();
-            this.brn_settings = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
+            this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.notify_menu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.menu_open = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.menu_available = new System.Windows.Forms.ToolStripMenuItem();
+            this.menu_busy = new System.Windows.Forms.ToolStripMenuItem();
+            this.menu_close = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.pnl_dialer.SuspendLayout();
             this.pnl_incomming.SuspendLayout();
+            this.notify_menu.SuspendLayout();
             this.SuspendLayout();
             // 
             // btn_0
@@ -215,7 +225,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(167)))), ((int)(((byte)(180)))));
-            this.panel2.Controls.Add(this.lbl_l2);
+            this.panel2.Controls.Add(this.textBox1);
             this.panel2.Controls.Add(this.lbl_l1);
             this.panel2.Controls.Add(this.lbl_l0);
             this.panel2.Controls.Add(this.lbl_nr);
@@ -223,16 +233,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(244, 90);
             this.panel2.TabIndex = 28;
-            // 
-            // lbl_l2
-            // 
-            this.lbl_l2.AutoSize = true;
-            this.lbl_l2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_l2.Location = new System.Drawing.Point(10, 60);
-            this.lbl_l2.Name = "lbl_l2";
-            this.lbl_l2.Size = new System.Drawing.Size(183, 24);
-            this.lbl_l2.TabIndex = 3;
-            this.lbl_l2.Text = "+31 (0)30 33 234 234";
             // 
             // lbl_l1
             // 
@@ -283,6 +283,34 @@
             this.pnl_dialer.Size = new System.Drawing.Size(241, 213);
             this.pnl_dialer.TabIndex = 27;
             this.pnl_dialer.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
+            // 
+            // brn_settings
+            // 
+            this.brn_settings.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(240)))), ((int)(((byte)(244)))));
+            this.brn_settings.FlatAppearance.BorderSize = 2;
+            this.brn_settings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.brn_settings.Font = new System.Drawing.Font("Microsoft Sans Serif", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.brn_settings.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(167)))), ((int)(((byte)(178)))));
+            this.brn_settings.Image = global::OTM_Client.Properties.Resources.framework_settings;
+            this.brn_settings.Location = new System.Drawing.Point(161, 155);
+            this.brn_settings.Name = "brn_settings";
+            this.brn_settings.Size = new System.Drawing.Size(84, 53);
+            this.brn_settings.TabIndex = 24;
+            this.brn_settings.UseVisualStyleBackColor = true;
+            // 
+            // button11
+            // 
+            this.button11.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(240)))), ((int)(((byte)(244)))));
+            this.button11.FlatAppearance.BorderSize = 2;
+            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button11.Font = new System.Drawing.Font("Microsoft Sans Serif", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(167)))), ((int)(((byte)(178)))));
+            this.button11.Image = global::OTM_Client.Properties.Resources.phone_logo_circle_green_kl;
+            this.button11.Location = new System.Drawing.Point(-3, 155);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(83, 53);
+            this.button11.TabIndex = 22;
+            this.button11.UseVisualStyleBackColor = true;
             // 
             // lbl_status
             // 
@@ -341,33 +369,69 @@
             this.btn_pickUp.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btn_pickUp.UseVisualStyleBackColor = false;
             // 
-            // brn_settings
+            // notifyIcon
             // 
-            this.brn_settings.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(240)))), ((int)(((byte)(244)))));
-            this.brn_settings.FlatAppearance.BorderSize = 2;
-            this.brn_settings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.brn_settings.Font = new System.Drawing.Font("Microsoft Sans Serif", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.brn_settings.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(167)))), ((int)(((byte)(178)))));
-            this.brn_settings.Image = global::OTM_Client.Properties.Resources.framework_settings;
-            this.brn_settings.Location = new System.Drawing.Point(161, 155);
-            this.brn_settings.Name = "brn_settings";
-            this.brn_settings.Size = new System.Drawing.Size(84, 53);
-            this.brn_settings.TabIndex = 24;
-            this.brn_settings.UseVisualStyleBackColor = true;
+            this.notifyIcon.ContextMenuStrip = this.notify_menu;
+            this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
+            this.notifyIcon.Text = "OTM-client";
+            this.notifyIcon.Visible = true;
             // 
-            // button11
+            // notify_menu
             // 
-            this.button11.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(240)))), ((int)(((byte)(244)))));
-            this.button11.FlatAppearance.BorderSize = 2;
-            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button11.Font = new System.Drawing.Font("Microsoft Sans Serif", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(167)))), ((int)(((byte)(178)))));
-            this.button11.Image = global::OTM_Client.Properties.Resources.phone_logo_circle_green_kl;
-            this.button11.Location = new System.Drawing.Point(-3, 155);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(83, 53);
-            this.button11.TabIndex = 22;
-            this.button11.UseVisualStyleBackColor = true;
+            this.notify_menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menu_open,
+            this.toolStripSeparator1,
+            this.menu_available,
+            this.menu_busy,
+            this.toolStripSeparator2,
+            this.menu_close});
+            this.notify_menu.Name = "notify_menu";
+            this.notify_menu.Size = new System.Drawing.Size(170, 104);
+            // 
+            // menu_open
+            // 
+            this.menu_open.Name = "menu_open";
+            this.menu_open.Size = new System.Drawing.Size(169, 22);
+            this.menu_open.Text = "Open OTM-Client";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(166, 6);
+            // 
+            // menu_available
+            // 
+            this.menu_available.Name = "menu_available";
+            this.menu_available.Size = new System.Drawing.Size(169, 22);
+            this.menu_available.Text = "Beschikbaar";
+            // 
+            // menu_busy
+            // 
+            this.menu_busy.Name = "menu_busy";
+            this.menu_busy.Size = new System.Drawing.Size(169, 22);
+            this.menu_busy.Text = "Niet storen...";
+            // 
+            // menu_close
+            // 
+            this.menu_close.Name = "menu_close";
+            this.menu_close.Size = new System.Drawing.Size(169, 22);
+            this.menu_close.Text = "Afsluiten";
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(166, 6);
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(167)))), ((int)(((byte)(178)))));
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(10, 61);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(230, 23);
+            this.textBox1.TabIndex = 3;
+            this.textBox1.Text = "0031626870414";
             // 
             // frm_main
             // 
@@ -388,6 +452,7 @@
             this.panel2.PerformLayout();
             this.pnl_dialer.ResumeLayout(false);
             this.pnl_incomming.ResumeLayout(false);
+            this.notify_menu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -414,10 +479,18 @@
         private System.Windows.Forms.Label lbl_l1;
         private System.Windows.Forms.Label lbl_l0;
         private System.Windows.Forms.Label lbl_nr;
-        private System.Windows.Forms.Label lbl_l2;
         private System.Windows.Forms.Panel pnl_incomming;
         private System.Windows.Forms.Button btn_pickUp;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.NotifyIcon notifyIcon;
+        private System.Windows.Forms.ContextMenuStrip notify_menu;
+        private System.Windows.Forms.ToolStripMenuItem menu_open;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem menu_available;
+        private System.Windows.Forms.ToolStripMenuItem menu_busy;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem menu_close;
+        private System.Windows.Forms.TextBox textBox1;
 
 
 

@@ -22,8 +22,18 @@ namespace OTM_Client
         }
         public string get(string n)
         {
-            var val = this.root.GetValue(n).ToString();
-            return val;
+            try
+            {
+                var val = this.root.GetValue(n).ToString();
+                return val;
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("Er is helaas een fout opgetreden. Kan de applicatie niet opstarten. \n (Registry keys niet gevonden)");
+                return null;
+            }
+            
+            
         }
     }
 }
