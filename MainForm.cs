@@ -64,6 +64,9 @@ namespace OTM_Client
             mpCheckTimer.Interval = 200;
             mpCheckTimer.Tick += MousePosCheck;
             mpCheckTimer.Enabled = true;
+
+            this.KeyPreview = true;
+            this.KeyDown += new KeyEventHandler(userH.keyDown);
             
         }
         private void CreateNotifyicon()

@@ -56,8 +56,7 @@
     <Compile Include="Classes\UDPLink.cs" />
     <Compile Include="Classes\error.cs" />
     <Compile Include="Classes\registry.cs" />
-    <Compile Include="Classes\ui.cs" />
-    <Compile Include="Classes\UIhandler.cs" />
+    <Compile Include="Classes\userH.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
