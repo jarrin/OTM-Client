@@ -12,27 +12,30 @@ namespace OTM_Client
         public string action { get; set; }
         public object data { get; set; }
         private Data c;
+        private UDPlink udp;
         public void handle()
         {
+            Debug.WriteLine("asd");
             switch (this.action)
             {
                 case "callstart":  //Phone starts ringing
                     c = JsonConvert.DeserializeObject<Data>(this.data.ToString());
-                    c.action = this.action;
                     this.incommingCall();
                 break;
                 case "callpickup": //Phone is picked up by user
-                Debug.WriteLine(c.id + "");
+
                 break;
                 case "callend":  //Ongoing call has ended
 
                 break;
                 case "makecall": //Incomming command to make call
-                    c = JsonConvert.DeserializeObject<Data>(this.data.ToString());
-                    c.action = this.action;
-                    this.makeCall();
+                   this.makeCall();
                 break;
             }
+        }
+        public void hookUDP(UDPlink u)
+        {
+            this.udp = u;
         }
 
         //Handles incomming calls
@@ -50,9 +53,16 @@ namespace OTM_Client
             }
             Program.f.changeState("incomming");
         }
+
         private void makeCall()
         {
-            
+            Debug.WriteLine("Making call to " + this.data);
+            JSONobject j = new JSONobject();
+            j.action = "dial";
+            j.data = new Data();
+            j.data.telnr = this.data + "";
+
+            this.udp.sendCMD(JsonConvert.SerializeObject(j));
         }
     
     }
@@ -66,12 +76,8 @@ namespace OTM_Client
     }
     public class Data
     {
-        public string action { get; set; }
-
-        public int id { get; set; }
         public string telnr { get; set; }
 
         public List<string> info { get; set; }
     }
-
 }

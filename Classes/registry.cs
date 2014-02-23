@@ -35,5 +35,9 @@ namespace OTM_Client
             
             
         }
+        public void set(string key, string n)
+        {
+            this.root.SetValue(key, n);
+        }
     }
 }

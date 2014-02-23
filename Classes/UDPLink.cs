@@ -48,12 +48,17 @@ namespace OTM_Client
             server = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
         }
 
-        private void send(string m)
+        public void sendCMD(string m)
         {
             var data = Encoding.ASCII.GetBytes(m);
             server.SendTo(data, data.Length, SocketFlags.None, RemoteEndPoint);
         }
-
+        public void subscribeMatchMaker(string xsiUser)
+        {
+            SubscripeData s = new SubscripeData();
+            s.data = new { username = xsiUser, headset = false };
+            this.sendCMD(JsonConvert.SerializeObject(s));
+        }
         public static void StartListener(int port)
         {
             
@@ -85,4 +90,10 @@ namespace OTM_Client
         }
 
     }
+    public class SubscripeData
+    {
+        public string action = "subscribe";
+        public object data { get; set; }
+    }
 }
+

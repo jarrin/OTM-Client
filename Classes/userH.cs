@@ -9,15 +9,39 @@ namespace OTM_Client
 {
     class userH
     {
-
-        public static void keyDown(object sender, KeyEventArgs e)
+        private frm_main f;
+        private UDPlink u;
+        public userH(frm_main f, UDPlink u)
         {
+            this.f = f;
+            this.u = u;
+        }
+        public void keyDown(object sender, KeyEventArgs e)
+        {
+            
             if (e.Control)
             {
                 //Modifier key used
-                if (e.KeyCode == Keys.Enter)
+                if (e.KeyCode == Keys.Return)
                 {
-
+                    Debug.WriteLine("CTRL+Enter");
+                    switch (f.formState)
+                    {
+                        case "dialing":
+                            eventH eh = new eventH();
+                            eh.action = "makecall";
+                            eh.data = this.f.getNumber();
+                            eh.hookUDP(u);
+                            eh.handle();
+                            break;
+                    }
+                }
+                else if (e.KeyCode == Keys.Back)
+                {
+                    if (this.f.formState == "dialing")
+                    {
+                        this.f.changeState("full");
+                    }
                 }
 
 
@@ -35,9 +59,13 @@ namespace OTM_Client
                     val = e.KeyValue - 96;
                 }
                 Debug.WriteLine(val);
+                f.addNumber(val);
+            }
+            else if(e.KeyData == Keys.Back)
+            {
+                f.removeNumber();
             }
         }
-
         private static bool IsKeyADigit(Keys key)
         {
             return (key >= Keys.D0 && key <= Keys.D9) || (key >= Keys.NumPad0 && key <= Keys.NumPad9);
