@@ -6,53 +6,59 @@ using System.Threading;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
 using System.Drawing;
-
+using System.Reflection;
+using Newtonsoft.Json;
 namespace OTM_Client
 {
     static class Program
     {
         public static frm_main f;
-        static string appGuid = "{8F6F0AC4-B9A1-45fd-A8CF-72F04E6BDE8F}";
+        static string appGuid = ((GuidAttribute)Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(GuidAttribute), false).GetValue(0)).Value.ToString();
         public const int WM_COPYDATA = 0x004a;
 
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        static void Main(string[] args)
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            
-            using (Mutex mutex = new Mutex(false, appGuid))
+            // get application GUID as defined in AssemblyInfo.cs
+
+
+            // unique id for global mutex - Global prefix means it is global to the machine
+            string mutexId = string.Format("Global\\{{{0}}}", appGuid);
+
+            using (var mutex = new Mutex(false, mutexId))
             {
-                if (!mutex.WaitOne(0, false))
+                try
                 {
-                    registry Reg = new registry();
-                    string pipeName = Reg.get("namedPipeName");
-                  // pipes Client = new pipes(pipeName, true);
+                    if (!mutex.WaitOne(0, false))
+                    {
+                        //signal existing app via named pipes
+                        JSONobject j = new JSONobject();
+                        j.action = "dial";
+                        j.data = new Data();
+                        j.data.telnr = args[0].Remove(0, 4).Trim('/');
+                        
+                        Pipe p  = new Pipe("OTMPipe");
+                        p.send(JsonConvert.SerializeObject(j));
+                        Environment.Exit(0);
+                    }
+                    else
+                    {
+                        // handle protocol with this instance   
+                        Program.f = new frm_main();
+                        Application.Run(f);
 
-                    //-- Send object
-                    JSONobject temp = new JSONobject();
-                    temp.action = "makecall";
-                    Data d = new Data();
-                    d.telnr = "0654545454";
-                    temp.data = d;
-                    //--
-
-                  //  Client.send("testxd");
-                    //Client.dispose();
-
-                    Application.Exit();
-                    return;
+                    }
                 }
-
-                Program.f = new frm_main();
-                Application.Run(f);
+                finally
+                {
+                    mutex.ReleaseMutex();
+                }
             }
         }
-     
-    
-      
-    }
+    }     
 }

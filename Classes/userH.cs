@@ -32,6 +32,7 @@ namespace OTM_Client
                             eh.action = "makecall";
                             eh.data = this.f.getNumber();
                             eh.hookUDP(u);
+                            eh.hookForm(this.f);
                             eh.handle();
                             break;
                     }
@@ -64,6 +65,21 @@ namespace OTM_Client
             else if(e.KeyData == Keys.Back)
             {
                 f.removeNumber();
+            }
+            else if (e.KeyData == Keys.Return)
+            {
+                e.Handled = true;
+                switch (f.formState)
+                {
+                    case "dialing":
+                        eventH eh = new eventH();
+                        eh.action = "makecall";
+                        eh.data = this.f.getNumber();
+                        eh.hookUDP(u);
+                        eh.hookForm(this.f);
+                        eh.handle();
+                        break;
+                }
             }
         }
         private static bool IsKeyADigit(Keys key)

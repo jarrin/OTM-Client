@@ -53,10 +53,10 @@ namespace OTM_Client
             var data = Encoding.ASCII.GetBytes(m);
             server.SendTo(data, data.Length, SocketFlags.None, RemoteEndPoint);
         }
-        public void subscribeMatchMaker(string xsiUser)
+        public void subscribeMatchMaker()
         {
             SubscripeData s = new SubscripeData();
-            s.data = new { username = xsiUser, headset = false };
+            s.data = new { headset = false };
             this.sendCMD(JsonConvert.SerializeObject(s));
         }
         public static void StartListener(int port)

@@ -47,8 +47,12 @@
             this.lbl_2 = new System.Windows.Forms.Label();
             this.lbl_1 = new System.Windows.Forms.Label();
             this.pnl_dialer = new System.Windows.Forms.Panel();
+            this.btn_settings = new System.Windows.Forms.Button();
+            this.button11 = new System.Windows.Forms.Button();
             this.lbl_status = new System.Windows.Forms.Label();
             this.pnl_incomming = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btn_pickUp = new System.Windows.Forms.Button();
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.notify_menu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.menu_open = new System.Windows.Forms.ToolStripMenuItem();
@@ -57,10 +61,7 @@
             this.menu_busy = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.menu_close = new System.Windows.Forms.ToolStripMenuItem();
-            this.button1 = new System.Windows.Forms.Button();
-            this.btn_pickUp = new System.Windows.Forms.Button();
-            this.btn_settings = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
+            this.brn_minimize = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.pnl_dialer.SuspendLayout();
@@ -70,6 +71,7 @@
             // 
             // btn_0
             // 
+            this.btn_0.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_0.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(240)))), ((int)(((byte)(244)))));
             this.btn_0.FlatAppearance.BorderSize = 2;
             this.btn_0.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -85,6 +87,7 @@
             // 
             // btn_9
             // 
+            this.btn_9.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_9.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(240)))), ((int)(((byte)(244)))));
             this.btn_9.FlatAppearance.BorderSize = 2;
             this.btn_9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -100,6 +103,7 @@
             // 
             // btn_8
             // 
+            this.btn_8.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_8.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(240)))), ((int)(((byte)(244)))));
             this.btn_8.FlatAppearance.BorderSize = 2;
             this.btn_8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -115,6 +119,7 @@
             // 
             // btn_7
             // 
+            this.btn_7.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_7.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(240)))), ((int)(((byte)(244)))));
             this.btn_7.FlatAppearance.BorderSize = 2;
             this.btn_7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -130,6 +135,7 @@
             // 
             // btn_6
             // 
+            this.btn_6.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_6.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(240)))), ((int)(((byte)(244)))));
             this.btn_6.FlatAppearance.BorderSize = 2;
             this.btn_6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -145,6 +151,7 @@
             // 
             // btn_5
             // 
+            this.btn_5.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_5.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(240)))), ((int)(((byte)(244)))));
             this.btn_5.FlatAppearance.BorderSize = 2;
             this.btn_5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -160,6 +167,7 @@
             // 
             // btn_4
             // 
+            this.btn_4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_4.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(240)))), ((int)(((byte)(244)))));
             this.btn_4.FlatAppearance.BorderSize = 2;
             this.btn_4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -176,6 +184,7 @@
             // btn_3
             // 
             this.btn_3.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.btn_3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_3.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(240)))), ((int)(((byte)(244)))));
             this.btn_3.FlatAppearance.BorderSize = 2;
             this.btn_3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -191,6 +200,7 @@
             // 
             // btn_2
             // 
+            this.btn_2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(240)))), ((int)(((byte)(244)))));
             this.btn_2.FlatAppearance.BorderSize = 2;
             this.btn_2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -206,6 +216,7 @@
             // 
             // btn_1
             // 
+            this.btn_1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(240)))), ((int)(((byte)(244)))));
             this.btn_1.FlatAppearance.BorderSize = 2;
             this.btn_1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -301,6 +312,38 @@
             this.pnl_dialer.TabIndex = 27;
             this.pnl_dialer.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
+            // btn_settings
+            // 
+            this.btn_settings.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_settings.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(240)))), ((int)(((byte)(244)))));
+            this.btn_settings.FlatAppearance.BorderSize = 2;
+            this.btn_settings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_settings.Font = new System.Drawing.Font("Microsoft Sans Serif", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_settings.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(167)))), ((int)(((byte)(178)))));
+            this.btn_settings.Image = global::OTM_Client.Properties.Resources.framework_settings;
+            this.btn_settings.Location = new System.Drawing.Point(161, 155);
+            this.btn_settings.Name = "btn_settings";
+            this.btn_settings.Size = new System.Drawing.Size(84, 53);
+            this.btn_settings.TabIndex = 24;
+            this.btn_settings.UseVisualStyleBackColor = true;
+            this.btn_settings.Click += new System.EventHandler(this.brn_settings_Click);
+            // 
+            // button11
+            // 
+            this.button11.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button11.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(240)))), ((int)(((byte)(244)))));
+            this.button11.FlatAppearance.BorderSize = 2;
+            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button11.Font = new System.Drawing.Font("Microsoft Sans Serif", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(167)))), ((int)(((byte)(178)))));
+            this.button11.Image = ((System.Drawing.Image)(resources.GetObject("button11.Image")));
+            this.button11.Location = new System.Drawing.Point(-3, 155);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(83, 53);
+            this.button11.TabIndex = 22;
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click_1);
+            // 
             // lbl_status
             // 
             this.lbl_status.AutoSize = true;
@@ -323,6 +366,40 @@
             this.pnl_incomming.Size = new System.Drawing.Size(244, 30);
             this.pnl_incomming.TabIndex = 27;
             this.pnl_incomming.Visible = false;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.LightCoral;
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Image = global::OTM_Client.Properties.Resources.deny;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(-1, 0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(245, 30);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "Ophangen (Escape)";
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // btn_pickUp
+            // 
+            this.btn_pickUp.BackColor = System.Drawing.Color.LightGreen;
+            this.btn_pickUp.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_pickUp.FlatAppearance.BorderSize = 0;
+            this.btn_pickUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_pickUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_pickUp.ForeColor = System.Drawing.Color.White;
+            this.btn_pickUp.Image = ((System.Drawing.Image)(resources.GetObject("btn_pickUp.Image")));
+            this.btn_pickUp.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_pickUp.Location = new System.Drawing.Point(0, 0);
+            this.btn_pickUp.Name = "btn_pickUp";
+            this.btn_pickUp.Size = new System.Drawing.Size(244, 30);
+            this.btn_pickUp.TabIndex = 0;
+            this.btn_pickUp.Text = "Opnemen (spatie)";
+            this.btn_pickUp.UseVisualStyleBackColor = false;
             // 
             // notifyIcon
             // 
@@ -376,69 +453,20 @@
             this.menu_close.Name = "menu_close";
             this.menu_close.Size = new System.Drawing.Size(169, 22);
             this.menu_close.Text = "Afsluiten";
+            this.menu_close.Click += new System.EventHandler(this.menu_close_Click);
             // 
-            // button1
+            // brn_minimize
             // 
-            this.button1.BackColor = System.Drawing.Color.LightCoral;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Image = global::OTM_Client.Properties.Resources.deny;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(122, 0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(122, 30);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "ctrl+escape";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.UseVisualStyleBackColor = false;
-            // 
-            // btn_pickUp
-            // 
-            this.btn_pickUp.BackColor = System.Drawing.Color.LightGreen;
-            this.btn_pickUp.FlatAppearance.BorderSize = 0;
-            this.btn_pickUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_pickUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_pickUp.ForeColor = System.Drawing.Color.White;
-            this.btn_pickUp.Image = ((System.Drawing.Image)(resources.GetObject("btn_pickUp.Image")));
-            this.btn_pickUp.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_pickUp.Location = new System.Drawing.Point(0, 0);
-            this.btn_pickUp.Name = "btn_pickUp";
-            this.btn_pickUp.Size = new System.Drawing.Size(122, 30);
-            this.btn_pickUp.TabIndex = 0;
-            this.btn_pickUp.Text = "ctrl+spatie";
-            this.btn_pickUp.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_pickUp.UseVisualStyleBackColor = false;
-            // 
-            // btn_settings
-            // 
-            this.btn_settings.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(240)))), ((int)(((byte)(244)))));
-            this.btn_settings.FlatAppearance.BorderSize = 2;
-            this.btn_settings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_settings.Font = new System.Drawing.Font("Microsoft Sans Serif", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_settings.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(167)))), ((int)(((byte)(178)))));
-            this.btn_settings.Image = global::OTM_Client.Properties.Resources.framework_settings;
-            this.btn_settings.Location = new System.Drawing.Point(161, 155);
-            this.btn_settings.Name = "btn_settings";
-            this.btn_settings.Size = new System.Drawing.Size(84, 53);
-            this.btn_settings.TabIndex = 24;
-            this.btn_settings.UseVisualStyleBackColor = true;
-            this.btn_settings.Click += new System.EventHandler(this.brn_settings_Click);
-            // 
-            // button11
-            // 
-            this.button11.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(240)))), ((int)(((byte)(244)))));
-            this.button11.FlatAppearance.BorderSize = 2;
-            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button11.Font = new System.Drawing.Font("Microsoft Sans Serif", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(167)))), ((int)(((byte)(178)))));
-            this.button11.Image = ((System.Drawing.Image)(resources.GetObject("button11.Image")));
-            this.button11.Location = new System.Drawing.Point(-3, 155);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(83, 53);
-            this.button11.TabIndex = 22;
-            this.button11.UseVisualStyleBackColor = true;
+            this.brn_minimize.AutoSize = true;
+            this.brn_minimize.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.brn_minimize.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.brn_minimize.ForeColor = System.Drawing.Color.White;
+            this.brn_minimize.Location = new System.Drawing.Point(223, -4);
+            this.brn_minimize.Name = "brn_minimize";
+            this.brn_minimize.Size = new System.Drawing.Size(23, 31);
+            this.brn_minimize.TabIndex = 4;
+            this.brn_minimize.Text = "-";
+            this.brn_minimize.Click += new System.EventHandler(this.label1_Click);
             // 
             // frm_main
             // 
@@ -446,6 +474,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(58)))), ((int)(((byte)(69)))));
             this.ClientSize = new System.Drawing.Size(250, 329);
+            this.Controls.Add(this.brn_minimize);
             this.Controls.Add(this.pnl_incomming);
             this.Controls.Add(this.lbl_status);
             this.Controls.Add(this.panel1);
@@ -499,6 +528,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem menu_close;
         private System.Windows.Forms.Label lbl_4;
+        private System.Windows.Forms.Label brn_minimize;
 
 
 

@@ -21,7 +21,6 @@ namespace OTM_Client
             if (Program.f.settings["clientPort"] != null) this.txt_client_port.Text = Program.f.settings["clientPort"];
             if (Program.f.settings["serverHost"] != null) this.txt_host_addr.Text = Program.f.settings["serverHost"];
             if (Program.f.settings["serverPort"] != null) this.txt_host_port.Text = Program.f.settings["serverPort"];
-            if (Program.f.settings["xsiUser"] != null) this.txt_user.Text = Program.f.settings["xsiUser"];
 
             Rectangle workingArea = Screen.GetWorkingArea(this);
 
@@ -43,10 +42,14 @@ namespace OTM_Client
                 Program.f.settings["clientPort"] = this.txt_client_port.Text;
                 Program.f.settings["serverHost"] = this.txt_host_addr.Text;
                 Program.f.settings["serverPort"] = this.txt_host_port.Text;
-                Program.f.settings["xsiUser"] = this.txt_user.Text;
                 Program.f.updateReg();
                 this.Close();
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Program.f.closeApplication();
         }
     }
 }

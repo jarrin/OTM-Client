@@ -27,7 +27,7 @@ namespace OTM_Client
         private error ErrorH;
         private userH userH;
         private hotkey hk;
-       // private PipeServer pS;
+        private Pipe P;
 
         public Rectangle workingArea;
 
@@ -42,11 +42,11 @@ namespace OTM_Client
         public frm_main()
         {
             Reg = new registry();
+            Reg.setUriReg("OTM");
+
             this.settings["serverPort"] = Reg.get("serverPort");
             this.settings["serverHost"] = Reg.get("serverHost");
             this.settings["clientPort"] = Reg.get("clientPort");
-            this.settings["xsiUser"] = Reg.get("xsiUser");
-            Debug.WriteLine(this.settings["xsiUser"]);
             InitializeComponent();
             this.setTextLine(1, "Kies een nummer...");
             this.setTextLine(2, "");
@@ -133,7 +133,6 @@ namespace OTM_Client
             this.Reg.set("serverPort", this.settings["serverPort"]);
             this.Reg.set("serverHost", this.settings["serverHost"]);
             this.Reg.set("clientPort", this.settings["clientPort"]);
-            this.Reg.set("xsiUser", this.settings["xsiUser"]);
         }
         //Changes form size & position
         public void changeState(string state)
@@ -149,16 +148,21 @@ namespace OTM_Client
                 case "minimal":
                     h = 30;
                     fs = "minimal";
-                break;
+                    break;
                 case "incomming":
                     h = 150;
                     fs = state;
-                break;
+                    break;
                 case "full":
                 case "dialing":
                     h = 329;
                     fs = state;
-                break;
+                    break;
+                case "ringing":
+                    h = 150;
+                    fs = state;
+                   
+                    break;
             }
 
             if (this.InvokeRequired)
@@ -171,19 +175,37 @@ namespace OTM_Client
                 switch (state)
                 {
                     case "incomming":
+                        this.Invoke((MethodInvoker)(() => this.brn_minimize.Visible = true));
                         this.Invoke((MethodInvoker)(() => this.pnl_dialer.Visible = false));
                         this.Invoke((MethodInvoker)(() => this.pnl_incomming.Visible = true));
+                        this.Invoke((MethodInvoker)(() => this.btn_pickUp.Visible = true));
                         this.Invoke((MethodInvoker)(() => this.btn_settings.Image = global::OTM_Client.Properties.Resources.framework_settings));
                         break;
                     case "dialing":
+                        this.Invoke((MethodInvoker)(() => this.brn_minimize.Visible = true));
+                        this.Invoke((MethodInvoker)(() => this.pnl_incomming.Visible = false));
                         this.Invoke((MethodInvoker)(() => this.setTextLine(1, "")));
                         this.Invoke((MethodInvoker)(() => this.setTextLine(4, "CTRL+ENTER om te bellen")));
                         this.Invoke((MethodInvoker)(() => this.btn_settings.Image = global::OTM_Client.Properties.Resources.hangup));
                         break;
+                    case "ringing":
+                        this.Invoke((MethodInvoker)(() => this.brn_minimize.Visible = false));
+                        this.Invoke((MethodInvoker)(() => this.pnl_incomming.Visible = true));
+                        this.Invoke((MethodInvoker)(() => this.btn_pickUp.Visible = false));
+                        this.Invoke((MethodInvoker)(() => this.setTextLine(1, "Gaat over..")));
+                        this.Invoke((MethodInvoker)(() => this.setTextLine(4, "")));
+                        this.Invoke((MethodInvoker)(() => this.btn_settings.Image = global::OTM_Client.Properties.Resources.hangup));
+                        break;
                     case "full":
+                        this.Invoke((MethodInvoker)(() => this.brn_minimize.Visible = true));
+                        this.Invoke((MethodInvoker)(() => this.pnl_incomming.Visible = false));
+                        
                         this.Invoke((MethodInvoker)(() => this.btn_settings.Image = global::OTM_Client.Properties.Resources.framework_settings));
                         this.setTextLine(1, "Kies een nummer...");
                         this.setTextLine(4, "");
+                        break;
+                    case "minimal":
+                        this.Invoke((MethodInvoker)(() => this.brn_minimize.Visible = false));
                         break;
                 }
 
@@ -197,19 +219,36 @@ namespace OTM_Client
                 switch (state)
                 {
                     case "incomming":
+                        this.brn_minimize.Visible = true;
                         this.pnl_dialer.Visible = false;
                         this.pnl_incomming.Visible = true;
+                        this.btn_pickUp.Visible = true;
                         this.btn_settings.Image = global::OTM_Client.Properties.Resources.framework_settings;
                         break;
-                    case "dialing":
+                    case "dialing": //dialing a number
+                        this.brn_minimize.Visible = true;
                         this.setTextLine(1, "");
                         this.setTextLine(4, "CTRL+ENTER om te bellen");
+                        this.pnl_incomming.Visible = false;
+                        this.btn_settings.Image = global::OTM_Client.Properties.Resources.hangup;
+                        break;
+                    case "ringing": //Phone is ringing to a number
+                        this.brn_minimize.Visible = false;
+                        this.pnl_incomming.Visible = true;
+                        this.btn_pickUp.Visible = false;
+                        this.setTextLine(1, "Gaat over...");
+                        this.setTextLine(4, "");
                         this.btn_settings.Image = global::OTM_Client.Properties.Resources.hangup;
                         break;
                     case "full":
+                        this.brn_minimize.Visible = true;
+                        this.pnl_incomming.Visible = false;
                         this.btn_settings.Image = global::OTM_Client.Properties.Resources.framework_settings;
                         this.setTextLine(1, "Kies een nummer...");
                         this.setTextLine(4, "");
+                        break;
+                    case "minimal":
+                        this.brn_minimize.Visible = false;
                         break;
 
                 }
@@ -218,7 +257,13 @@ namespace OTM_Client
             
            
         }
-
+        public void setFocus()
+        {
+            if (this.InvokeRequired)
+                this.Invoke((MethodInvoker)(() => this.BringToFront()));
+            else
+                this.BringToFront();
+        }
         public void setStatus(string t)
         {
             if (this.InvokeRequired)
@@ -227,7 +272,18 @@ namespace OTM_Client
                 this.lbl_status.Text = t;
         }
 
-
+        public void setNumber(string n)
+        {
+            if (this.InvokeRequired)
+            {
+                this.lbl_1.Invoke((MethodInvoker)(() => this.lbl_1.Text = n));
+            }
+            else
+            {
+                this.lbl_1.Text = n;
+            }
+            
+        }
         public void addNumber(int n)
         {
             if (this.formState != "dialing")
@@ -244,6 +300,7 @@ namespace OTM_Client
             {
                 this.lbl_1.Font = new Font(this.lbl_1.Font.Name, 14);
             }
+            this.lbl_1.Focus();
 
         }
         public void removeNumber()
@@ -312,7 +369,9 @@ namespace OTM_Client
 
         private void frm_main_Load(object sender, EventArgs e)
         {
-            if (this.settings["xsiUser"] == null || this.settings["serverPort"] == null || this.settings["serverHost"] == null || this.settings["clientPort"] == null)
+            Boolean success = frm_main.RegisterHotKey(this.Handle, this.GetType().GetHashCode(), 0x0000, 0x42);//Set hotkey as 'b'Boolean success = Form1.RegisterHotKey(this.Handle, this.GetType().GetHashCode(), 0x0000, 0x42);//Set hotkey as 'b'
+            this.lbl_1.Focus();
+            if(this.settings["serverPort"] == null || this.settings["serverHost"] == null || this.settings["clientPort"] == null)
             {
                 this.changeState("full");
                 frm_settings f = new frm_settings();
@@ -322,14 +381,21 @@ namespace OTM_Client
             else
             {
                 Con = new UDPlink(this.settings["serverHost"], Convert.ToInt32(this.settings["serverPort"]), Convert.ToInt32(this.settings["clientPort"]));
-                Con.subscribeMatchMaker(this.settings["xsiUser"]);
+                Con.subscribeMatchMaker();
                 userH = new userH(this, Con);
+                P = new Pipe("OTMPipe");
+                P.form = this;
+                P.createPipeServer();
+
                 this.KeyPreview = true;
                 this.KeyDown += new KeyEventHandler(userH.keyDown);
             }
 
         }
-
+        public void closeApplication()
+        {
+            Environment.Exit(0);
+        }
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
@@ -420,7 +486,7 @@ namespace OTM_Client
         private void btn_0_Click(object sender, EventArgs e)
         {
             addNumber(0);
-            this.Con.subscribeMatchMaker(this.settings["xsiUser"]);
+            this.Con.subscribeMatchMaker();
         }
         private void btn_1_Click(object sender, EventArgs e)
         {
@@ -459,25 +525,44 @@ namespace OTM_Client
             addNumber(9);
         }
 
-    }
-    class TextBoxWithoutCaret : TextBox
-    {
-        [DllImport("coredll.dll")]
-        static extern bool HideCaret(IntPtr hwnd);
-
-        [DllImport("coredll.dll")]
-        static extern bool ShowCaret(IntPtr hwnd);
-
-        protected override void OnGotFocus(EventArgs e)
+        private void menu_close_Click(object sender, EventArgs e)
         {
-            base.OnGotFocus(e);
-            HideCaret(Handle);
+            this.notifyIcon.Visible = false;
+            this.closeApplication();
         }
 
-        protected override void OnLostFocus(EventArgs e)
+        private void label1_Click(object sender, EventArgs e)
         {
-            base.OnLostFocus(e);
-            ShowCaret(Handle);
+            this.changeState("minimal");
+        }
+
+        private void button11_Click_1(object sender, EventArgs e)
+        {
+            switch (this.formState)
+            {
+                case "dialing":
+                    eventH eh = new eventH();
+                    eh.action = "makecall";
+                    eh.data = this.getNumber();
+                    eh.hookUDP(this.Con);
+                    eh.hookForm(this);
+                    eh.handle();
+                    break;
+            }
+        }
+        [DllImport("user32.dll")]
+        public static extern bool RegisterHotKey(IntPtr hWnd, int id, int fsModifiers, int vlc);
+        //[DllImport("user32.dll")]
+        //public static extern bool UnregisterHotKey(IntPtr hWnd, int id);
+
+        protected override void WndProc(ref Message m)
+        {
+            if (m.Msg == 0x0312)
+            {
+                MessageBox.Show("Catched");//You can replace this statement with your desired response to the Hotkey.
+            }
+            base.WndProc(ref m);
         }
     }
+
 }
